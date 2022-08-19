@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ZoomMeetings (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ZoomMeetings (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="ZoomMeetings.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:root="using:ZoomMeetings"
+    xmlns:local="using:ZoomMeetings.Pages"
+    xmlns:controls="using:ZoomMeetings.Controls"
+    xmlns:api="using:ZoomAPI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <controls:Header Title="Welcome Back!">
+
+            <Grid>
+
+                <TextBlock x:Name="NoMeetings"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Visibility="Collapsed">
+                You haven't added any meetings! 
+                <LineBreak/>Click the "Add Meetings" button to begin!
+                </TextBlock>
+
+                <GridView x:Name="MeetingsView"
+                      Visibility="Collapsed"
+                      HorizontalAlignment="Center"
+                      ItemsSource="{x:Bind root:App.Meetings}"
+                      IsItemClickEnabled="True"
+                      ItemClick="MeetingsView_ItemClick"
+                      AllowDrop="True"
+                      CanReorderItems="True"
+                      Margin="24">
+
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="api:Meeting">
+                            <Grid Height="150"
+                              Width="250"
+                              Padding="16"
+                              CornerRadius="4"
+                              Background="{ThemeResource SystemRevealListLowColor}">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="{x:Bind Name}"
+                                       Grid.Row="0"
+                                       TextWrapping="WrapWholeWords"
+                                       FontWeight="Bold"
+                                       FontSize="20"/>
+                                <TextBlock Text="{x:Bind Desc}"
+                                       TextWrapping="WrapWholeWords"
+                                       Grid.Row="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+
+                </GridView>
+
+            </Grid>
+
+        </controls:Header>
+
+        <Button x:Name="AddButton"
+                Margin="40, 24"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Grid.Column="1"
+                Content="+ Add Meeting"
+                Click="AddButton_Click"/>
+
+    </Grid>
+    
+</Page>
