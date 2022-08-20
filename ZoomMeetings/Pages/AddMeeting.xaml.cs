@@ -48,7 +48,7 @@ public sealed partial class AddMeeting : Page
 
         if (linkMode)
         {
-            var regex = new Regex(@"http[s*]://.*?\.zoom\.us/j/([0-9]{10})(\?pwd=(\S+))?", RegexOptions.Compiled | RegexOptions.Multiline);
+            var regex = new Regex(@"http[s*]://.*?\.*zoom\.us/j/([0-9]{10,11})(\?pwd=(\S+))?", RegexOptions.Compiled | RegexOptions.Multiline);
             var matches = regex.Matches(Link.Text);
             if (matches.Count == 0)
             {
