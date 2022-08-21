@@ -35,6 +35,10 @@ public sealed partial class MainWindow : Window
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
         SetWindowIcon("Assets/Icon.ico");
+        Closed += (object sender, WindowEventArgs args) =>
+        {
+            AppUtils.SaveMeetings();
+        };
     }
 
     /// <summary>
